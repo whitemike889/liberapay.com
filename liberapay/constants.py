@@ -17,7 +17,7 @@ def check_bits(bits):
     assert not [b for b in bits if '{0:b}'.format(b).count('1') != 1]  # single bit
 
 
-Event = namedtuple('Event', 'name bit title')
+Event = namedtuple('Event', 'name bit title show_in_list')
 
 
 class Fees(namedtuple('Fees', ('var', 'fix'))):
@@ -137,18 +137,20 @@ EUROZONE = set("AT BE CY DE EE ES FI FR GR IE IT LT LU LV MT NL PT SI SK".split(
 SEPA = EUROZONE | set("BG CH CZ DK GB GI HR HU IS LI MC NO PL RO SE".split())
 
 EVENTS = [
-    Event('income', 1, _("Every week as long as I am receiving donations")),
-    Event('donate_reminder', 2, _("When it's time to renew my donations")),
-    Event('withdrawal_created', 4, _("When a transfer to my bank account is initiated")),
-    Event('withdrawal_failed', 8, _("When a transfer to my bank account fails")),
-    Event('pledgee_joined', 16, _("When someone I pledge to joins Liberapay")),
-    Event('team_invite', 32, _("When someone invites me to join a team")),
-    Event('payin_failed', 2**11, _("When a payment I initiated fails")),
-    Event('payin_succeeded', 2**12, _("When a payment I initiated succeeds")),
+    Event('income', 1, _("Every week as long as I am receiving donations"), True),
+    Event('donate_reminder', 2, _("When it's time to renew my donations"), True),
+    Event('withdrawal_created', 4, _("When a transfer to my bank account is initiated"), False),
+    Event('withdrawal_failed', 8, _("When a transfer to my bank account fails"), False),
+    Event('pledgee_joined', 16, _("When someone I pledge to joins Liberapay"), True),
+    Event('team_invite', 32, _("When someone invites me to join a team"), True),
+    Event('payin_failed', 2**11, _("When a payment I initiated fails"), True),
+    Event('payin_succeeded', 2**12, _("When a payment I initiated succeeds"), True),
+    Event('payment_account_required', 2**13, _("When my patrons are unable to donate to me"), False),
 ]
 check_bits([e.bit for e in EVENTS])
+EVENTS_LIST = [e for e in EVENTS if e.show_in_list]
+EVENTS_LIST_S = ' '.join(e.name for e in EVENTS_FILTERED)
 EVENTS = OrderedDict((e.name, e) for e in EVENTS)
-EVENTS_S = ' '.join(EVENTS.keys())
 
 # https://www.mangopay.com/pricing/
 FEE_PAYIN_BANK_WIRE = Fees(Decimal('0.005'), 0)  # 0.5%
