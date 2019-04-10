@@ -92,11 +92,18 @@ def normalize_email_address(email):
     # Check that the domain has at least one MX record
     if website.app_conf.check_email_domains:
         try:
-            DNS.query(domain, 'MX')
+            rrset = (
+                DNS.query(domain, 'MX', raise_on_no_answer=False).rrset or
+                DNS.query(domain, 'A', raise_on_no_answer=False).rrset or
+                DNS.query(domain, 'AAAA', raise_on_no_answer=False).rrset
+            )
         except DNSException:
             raise BadEmailDomain(domain)
         except Exception as e:
             website.tell_sentry(e, {})
+        else:
+            if rrset is None:
+                raise BadEmailDomain(domain)
 
     return email
 
