@@ -24,9 +24,9 @@ pytest==3.6.4 \
         --hash=sha256:e160a7fcf25762bb60efc7e171d4497ff1d8d2d75a3d0df7a21b76821ecbf5c5 \
         --hash=sha256:7f8ae7f5bdf75671a718d2daf0a64b7885f74510bcd98b1a0bb420eb9a9d0cff
 
-    py==1.7.0 \
-        --hash=sha256:e76826342cefe3c3d5f7e8ee4316b80d1dd8a300781612ddbc765c17ba25a6c6 \
-        --hash=sha256:bf92637198836372b520efcba9e020c330123be8ce527e535d185ed4b6f45694
+    py==1.10.0 \
+        --hash=sha256:3b80836aa6d1feeaa108e046da6423ab8f6ceda6468545ae8d02d9d58d18818a \
+        --hash=sha256:21b81bda15b66ef5e1a777a21c4dcd9c20ad3efd0b3f817e7a809035269e1bd3
 
 pytest-cov==2.6.1 \
     --hash=sha256:230ef817450ab0699c6cc3c9c8f7a829c34674456f2ed8df1fe1d39780f7c87f \
