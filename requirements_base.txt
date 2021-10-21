@@ -155,9 +155,9 @@ html2text==2016.4.2 \
 MailShake==0.17.0 \
     --hash=sha256:55fda8b4b0503bae92c971a8964a3412733a99a4af9a8828769157508b31464f
 
-Babel==2.6.0 \
-    --hash=sha256:6778d85147d5d85345c14a26aada5e478ab04e39b078b0745ee6870c2b5cf669 \
-    --hash=sha256:8cba50f48c529ca3fa18cf81fa9403be176d374ac4d60738b839122dfaaa3d23
+Babel==2.9.1 \
+    --hash=sha256:ab49e12b91d937cd11f0b67cb259a57ab4ad2b59ac7a3b41d6c06c0ac5b0def9 \
+    --hash=sha256:bc0c176f9f6a994582230df350aa6e05ba2ebe4b3ac317eab29d9be5d2768da0
 
     pytz==2018.9 \
         --hash=sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9 \
